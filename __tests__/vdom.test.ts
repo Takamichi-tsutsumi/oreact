@@ -2,39 +2,39 @@ import { h, VNode } from '../src/vdom'
 
 describe('Test h', () => {
   test('simple', () => {
-    const node = h('div', {})
-    expect(node.tagName).toBe('div')
-    expect(node.attrs).toEqual({})
-    expect(node.key).toBeUndefined()
-    expect(node.children).toBeUndefined()
+    const vnode = h('div', {})
+    expect(vnode.tagName).toBe('div')
+    expect(vnode.attrs).toEqual({})
+    expect(vnode.key).toBeUndefined()
+    expect(vnode.children).toBeUndefined()
   })
 
   test('with attributes', () => {
-    const node = h('div', { className: 'container' })
-    expect(node.attrs.className).toEqual('container')
+    const vnode = h('div', { className: 'container' })
+    expect(vnode.attrs.className).toEqual('container')
   })
 
   test('with key attr', () => {
-    const node = h('div', { key: 'key' })
-    expect(node.key).toEqual('key')
+    const vnode = h('div', { key: 'key' })
+    expect(vnode.key).toEqual('key')
   })
 
   test('with children', () => {
-    const node = h(
+    const vnode = h(
       'div',
       { className: 'parent' },
       h('a', { href: 'google.com' })
     )
-    expect(node.children).toEqual(new VNode('a', { href: 'google.com' }))
+    expect(vnode.children).toEqual(new VNode('a', { href: 'google.com' }))
   })
 
   test('with children of array', () => {
-    const node = h('div', { className: 'parent' }, [
+    const vnode = h('div', { className: 'parent' }, [
       h('a', { href: 'google.com' }),
       h('p', {}, 'Hello, world')
     ])
 
-    expect(Array.isArray(node.children)).toBe(true)
-    expect((node.children as VNode[]).length).toBe(2)
+    expect(Array.isArray(vnode.children)).toBe(true)
+    expect((vnode.children as VNode[]).length).toBe(2)
   })
 })
