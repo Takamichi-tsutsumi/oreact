@@ -7,7 +7,10 @@
     "start": "node dist/index.js",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "test": "jest --coverage",
+    "test": "jest -o",
+    "test:watch": "jest --watch",
+    "test:all": "jest",
+    "test:coverage": "jest --coverage",
     "precommit": "lint-staged"
   },
   "repository": {
