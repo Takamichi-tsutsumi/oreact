@@ -1,8 +1,8 @@
 import { VNode } from './vdom'
-import { applyProperties } from './applyProperties'
+import applyProperties from './applyProperties'
 
 // Creating DOM node from Virtual DOM
-const createElement = (vnode: VNode): HTMLElement => {
+export default function createElement(vnode: VNode): HTMLElement {
   const node = document.createElement(vnode.tagName)
   applyProperties(node, vnode.attrs)
 
@@ -16,5 +16,3 @@ const createElement = (vnode: VNode): HTMLElement => {
 
   return node
 }
-
-export default createElement

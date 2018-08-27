@@ -12,6 +12,6 @@ export class VNode {
   }
 }
 
-export const h = (tagName: string, attrs?: {}, children?: any): VNode => {
+export function h(tagName: string, attrs?: {}, children?: any): VNode {
   return new VNode(tagName, attrs, children)
 }

@@ -1,4 +1,4 @@
-import { applyProperties } from '../src/applyProperties'
+import applyProperties from '../src/applyProperties'
 
 describe('applyProperties', () => {
   test('simple case', () => {
