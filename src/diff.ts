@@ -23,5 +23,9 @@ export default function diff(tree: VNode, nextTree: VNode): Patch[] {
     }
   }
 
+  if (!!tree.children && !nextTree.children) {
+    patches.push(new Patch(PatchType.REMOVE, tree, null))
+  }
+
   return patches
 }
