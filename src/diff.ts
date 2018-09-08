@@ -1,14 +1,27 @@
 import { Patch, PatchType } from './patch'
 import { VNode } from './vdom'
+import { isSameObj } from './utils'
 
 export default function diff(tree: VNode, nextTree: VNode): Patch[] {
   const patches: Patch[] = []
   if (tree === nextTree) {
     return patches
   }
-  // TODO: implement diff algorithm here
-  const patch = new Patch(PatchType.TEXT, tree, null)
-  patches.push(patch)
+
+  // Diff Props
+  if (!isSameObj(tree.attrs, nextTree.attrs)) {
+    // TODO: Implement diffProps
+  }
+
+  // Diff Children
+  if (
+    typeof tree.children === 'string' &&
+    typeof nextTree.children === 'string'
+  ) {
+    if (tree.children !== nextTree.children) {
+      patches.push(new Patch(PatchType.TEXT, tree, nextTree.children))
+    }
+  }
 
   return patches
 }
