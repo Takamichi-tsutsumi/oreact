@@ -7,9 +7,11 @@ function main() {
     h('p', { className: 'page-content' }, 'paragraph')
   ])
   const root = document.getElementById('root')
+  let treeRoot
   if (root) {
-    render(app, root)
+    treeRoot = render(app, root)
   }
+  console.info(treeRoot)
 }
 
 main()
