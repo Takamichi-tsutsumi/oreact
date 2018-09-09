@@ -1,4 +1,4 @@
-import { VNode } from './vdom'
+import { VNode } from './vnode'
 
 export enum PatchType {
   TEXT,
@@ -8,12 +8,12 @@ export enum PatchType {
 
 export class Patch {
   public type: PatchType
-  public node: VNode
+  public vnode: VNode
   public patch: VNode | string | null
 
-  constructor(type: PatchType, node: VNode, patch: VNode | string | null) {
+  constructor(type: PatchType, vnode: VNode, patch: VNode | string | null) {
     this.type = type
-    this.node = node
+    this.vnode = vnode
     this.patch = patch
   }
 }

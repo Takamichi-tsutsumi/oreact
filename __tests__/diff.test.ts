@@ -1,5 +1,5 @@
 import diff from '../src/diff'
-import { VNode } from '../src/vdom'
+import { VNode } from '../src/vnode'
 import { PatchType } from '../src/patch'
 
 describe('diff', () => {

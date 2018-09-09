@@ -1,4 +1,4 @@
-import { h } from './vdom'
+import { h } from './vnode'
 import render from './render'
 
 function main() {

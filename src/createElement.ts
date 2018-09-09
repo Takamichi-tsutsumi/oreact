@@ -1,4 +1,4 @@
-import { VNode } from './vdom'
+import { VNode } from './vnode'
 import applyProperties from './applyProperties'
 
 // Creating DOM node from Virtual DOM
