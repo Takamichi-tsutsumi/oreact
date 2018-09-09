@@ -7,7 +7,7 @@ describe('Test h', () => {
     expect(vnode.tagName).toBe('div')
     expect(vnode.attrs).toEqual({})
     expect(vnode.key).toBeUndefined()
-    expect(vnode.children).toBeUndefined()
+    expect(vnode.children.length).toBe(0)
   })
 
   test('with attributes', () => {
@@ -26,7 +26,7 @@ describe('Test h', () => {
       { className: 'parent' },
       h('a', { href: 'google.com' })
     )
-    expect(vnode.children).toEqual(new VNode('a', { href: 'google.com' }))
+    expect(vnode.children).toEqual([new VNode('a', { href: 'google.com' })])
   })
 
   test('with children of array', () => {
