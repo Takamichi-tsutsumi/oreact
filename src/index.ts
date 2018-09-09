@@ -1,17 +1,20 @@
 import { h } from './vnode'
 import render from './render'
+import { Patch, PatchType } from './patch'
+import applyPatch from './applyPatch'
 
 function main() {
-  const app = h('div', { className: 'app' }, [
-    h('h1', { className: 'page-title' }, 'Title'),
-    h('p', { className: 'page-content' }, 'paragraph')
-  ])
+  const app = h('h1', { className: 'title' }, 'Hello')
   const root = document.getElementById('root')
-  let treeRoot
   if (root) {
-    treeRoot = render(app, root)
+    render(app, root)
   }
-  console.info(treeRoot)
+
+  ;(window as any).changeText = (text: string) => {
+    const patch = new Patch(PatchType.TEXT, app, text)
+    applyPatch(patch)
+    console.info(app)
+  }
 }
 
 main()
