@@ -1,5 +1,5 @@
 import createElement from './createElement'
-import { VNode } from './vnode'
+import VNode from './vdom/vnode'
 
 export default function render(vnode: VNode, root: HTMLElement) {
   const elm = createElement(vnode)

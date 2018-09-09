@@ -1,4 +1,4 @@
-import { h } from './vnode'
+import h from './vdom/h'
 import render from './render'
 import { Patch, PatchType } from './patch'
 import applyPatch from './applyPatch'

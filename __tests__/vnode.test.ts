@@ -1,4 +1,5 @@
-import { h, VNode } from '../src/vnode'
+import h from '../src/vdom/h'
+import VNode from '../src/vdom/vnode'
 
 describe('Test h', () => {
   test('simple', () => {

@@ -1,4 +1,4 @@
-export class VNode {
+export default class VNode {
   public readonly tagName: string
   public readonly key?: string
   public attrs: { [s: string]: any }
@@ -11,8 +11,4 @@ export class VNode {
     this.children = children
     this.key = this.attrs.key
   }
-}
-
-export function h(tagName: string, attrs?: {}, children?: any): VNode {
-  return new VNode(tagName, attrs, children)
 }

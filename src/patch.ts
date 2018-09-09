@@ -1,4 +1,4 @@
-import { VNode } from './vnode'
+import VNode from './vdom/vnode'
 
 export enum PatchType {
   TEXT,

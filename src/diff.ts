@@ -1,5 +1,5 @@
 import { Patch, PatchType } from './patch'
-import { VNode } from './vnode'
+import VNode from './vdom/vnode'
 import { isSameObj } from './utils'
 
 export default function diff(tree: VNode, nextTree: VNode): Patch[] {
