@@ -18,7 +18,9 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"]
   },
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./dist",
+    open: true,
+    overlay: true
   },
   output: {
     filename: "bundle.js",
