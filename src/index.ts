@@ -5,11 +5,15 @@ import applyPatch from './applyPatch'
 import VNode from './vdom/vnode'
 
 function main() {
-  const app = h(
-    'h1',
-    { className: 'title' },
-    h('p', { className: 'hello' }, 'World')
-  )
+  const app = h('h1', { className: 'title' }, [
+    h('p', { className: 'hello' }, 'Hello'),
+    h('p', { className: 'hello' }, 'World'),
+    h(
+      'button',
+      { className: 'hello', onClick: () => console.info('YO!! Clicked!!') },
+      'World'
+    )
+  ])
   const root = document.getElementById('root')
   if (root) {
     render(app, root)
