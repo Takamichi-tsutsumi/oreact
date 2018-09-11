@@ -1,6 +1,7 @@
 import { Patch, PatchType } from './patch'
 import VString from './vdom/vstring'
 
+// TODO: after applyPatch, need to replace tree to newTree
 export default function applyPatch(patch: Patch) {
   if (patch.type === PatchType.TEXT) {
     // TODO: extract check dom rendered function
@@ -11,6 +12,8 @@ export default function applyPatch(patch: Patch) {
   }
 
   if (patch.type === PatchType.REMOVE) {
-    // TODO: implement remove
+    if (patch.vnode.dom && patch.vnode.dom.parentNode) {
+      patch.vnode.dom.parentNode.removeChild(patch.vnode.dom)
+    }
   }
 }
