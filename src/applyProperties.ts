@@ -9,7 +9,6 @@ export default function applyProperties(
       node.setAttribute('class', props[k])
     } else if (isEventType(k)) {
       bindEvent(node, k, props[k])
-      node.setAttribute(k, props[k])
     } else {
       node.setAttribute(k, props[k])
     }
