@@ -4,9 +4,9 @@
   "description": "React implementation for studying purpose",
   "main": "dist/bundle.js",
   "scripts": {
-    "start:example": "webpack-dev-server",
-    "build": "webpack",
-    "build:watch": "webpack --watch",
+    "start:example": "webpack-dev-server --config ./example/webpack.config.js",
+    "build": "webpack --config ./example/webpack.config.js",
+    "build:watch": "webpack --watch --config ./example/webpack.config.js",
     "test": "jest -o",
     "test:watch": "jest --watch",
     "test:all": "jest",
