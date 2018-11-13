@@ -1,8 +1,8 @@
-import h from './vdom/h'
-import render from './render'
-import { Patch, PatchType } from './patch'
-import applyPatch from './applyPatch'
-import VNode from './vdom/vnode'
+import h from '../src/vdom/h'
+import render from '../src/render'
+import { Patch, PatchType } from '../src/patch'
+import applyPatch from '../src/applyPatch'
+import VNode from '../src/vdom/vnode'
 
 function main() {
   const app = h('h1', { className: 'title' }, [
