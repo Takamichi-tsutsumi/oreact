@@ -17,7 +17,7 @@ export default class VNode {
     this.key = this.attrs.key
 
     // FIXME: construct children array
-    if (!children) {
+    if (children === undefined) {
       this.children = []
       return
     }

@@ -3,7 +3,8 @@ interface IEventType {
 }
 
 export const EventTypes = {
-  onClick: 'click'
+  onClick: 'click',
+  onChange: 'change'
 }
 
 export function bindEvent(

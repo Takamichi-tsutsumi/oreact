@@ -11,20 +11,21 @@ class App {
   public rootDOM: HTMLElement
 
   constructor(rootDOM: HTMLElement) {
-    this.state = { count: 0 }
+    this.state = { count: 0, text: '' }
     this.rootDOM = rootDOM
   }
 
   public setState = (newState: any) => {
     if (this.state !== newState) {
-      this.state = newState
+      this.state = { ...this.state, ...newState }
       this.render()
     }
   }
 
   public render = () => {
     const state = this.state
-    const newTree = h('h1', { className: 'title' }, [
+    const newTree = h('div', { className: 'container' }, [
+      h('h1', { className: 'title' }, 'COUNTER'),
       h('p', { className: 'hello' }, `${state.count}`),
       h(
         'button',
@@ -33,7 +34,20 @@ class App {
           onClick: () => this.setState({ count: this.state.count + 1 })
         },
         'increment'
-      )
+      ),
+      h(
+        'button',
+        {
+          className: 'count',
+          onClick: () => this.setState({ count: this.state.count - 1 })
+        },
+        'decrement'
+      ),
+      h('input', {
+        className: 'input',
+        onChange: (e: any) => this.setState({ text: e.target.value })
+      }),
+      h('p', { className: 'text' }, state.text)
     ])
 
     if (!this.tree) {
