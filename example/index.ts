@@ -1,36 +1,60 @@
 import h from '../src/vdom/h'
 import render from '../src/render'
-import { Patch, PatchType } from '../src/patch'
+// import { Patch, PatchType } from '../src/patch'
 import applyPatch from '../src/applyPatch'
+import diff from '../src/diff'
 import VNode from '../src/vdom/vnode'
 
-function main() {
-  const app = h('h1', { className: 'title' }, [
-    h('p', { className: 'hello' }, 'Hello'),
-    h('p', { className: 'hello' }, 'World'),
-    h(
-      'button',
-      { className: 'hello', onClick: () => console.info('YO!! Clicked!!') },
-      'World'
-    )
-  ])
-  const root = document.getElementById('root')
-  if (root) {
-    render(app, root)
+class App {
+  public state: any
+  public tree: VNode | undefined
+  public rootDOM: HTMLElement
+
+  constructor(rootDOM: HTMLElement) {
+    this.state = { count: 0 }
+    this.rootDOM = rootDOM
   }
 
-  ;(window as any).removehild = () => {
-    const patch = new Patch(PatchType.REMOVE, app, null)
-    applyPatch(patch)
-    console.info(app)
-  }
-  ;(window as any).changeText = (text: string) => {
-    const child = app.children[0]
-    if (child instanceof VNode) {
-      const patch = new Patch(PatchType.TEXT, child, text)
-      applyPatch(patch)
-      console.info(app)
+  public setState = (newState: any) => {
+    if (this.state !== newState) {
+      this.state = newState
+      this.render()
     }
+  }
+
+  public render = () => {
+    const state = this.state
+    const newTree = h('h1', { className: 'title' }, [
+      h('p', { className: 'hello' }, `${state.count}`),
+      h(
+        'button',
+        {
+          className: 'count',
+          onClick: () => this.setState({ count: this.state.count + 1 })
+        },
+        'increment'
+      )
+    ])
+
+    if (!this.tree) {
+      this.tree = newTree
+      render(newTree, this.rootDOM)
+    } else {
+      const patches = diff(this.tree, newTree)
+      patches.forEach(patch => {
+        applyPatch(patch)
+      })
+    }
+  }
+
+  // public update = () => {}
+}
+
+function main() {
+  const root = document.getElementById('root')
+  if (root) {
+    const app = new App(root)
+    app.render()
   }
 }
 

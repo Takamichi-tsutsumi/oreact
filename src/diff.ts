@@ -27,6 +27,15 @@ export default function diff(tree: VNode, nextTree: VNode): Patch[] {
           patches.push(new Patch(PatchType.TEXT, tree, nfc.text))
         }
       }
+    } else if (tree.children.length === nextTree.children.length) {
+      const ps: Patch[] = []
+      tree.children.map((node, i) => {
+        diff(node as VNode, nextTree.children[i] as VNode).forEach(patch =>
+          ps.push(patch)
+        )
+      })
+
+      return ps
     }
   }
 
